@@ -35,3 +35,10 @@ class mergesort_Should(TestCase):
         sorted_list = merge_sort(unsorted_list)
         #Assert
         self.assertEqual(sorted_list,["ape","apple","apples","bee"])
+
+    def test_mergesort_raises_error_when_values_incompatible(self):
+        #Arrange
+        unsorted_list = ["bee","apples","apple",1,"ape"]
+        #Act and Assert
+        with self.assertRaises(TypeError):
+            merge_sort(unsorted_list)

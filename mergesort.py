@@ -69,3 +69,6 @@ print(sorted_list)
 unsorted_list = ["bee", "apples", "apple", "ape"]
 sorted_list = merge_sort(unsorted_list)
 print(sorted_list)
+unsorted_list = ["bee","apples","apple",1,"ape"]
+sorted_list = merge_sort(unsorted_list)
+print(sorted_list)
