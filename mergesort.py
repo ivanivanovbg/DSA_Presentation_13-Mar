@@ -81,7 +81,8 @@ def merge_left_right(left_part:[],right_part:[])->[]:
         else:
             #If both elements cannot be compared raise TypeError
             raise TypeError("Types of list elements do not support sorting in such a way!")
-    #If
+    #If one of the parts ( left or right ) has been exhausted for example the left part
+    #we must extend the list with the remaining elements of the right part.
     merge_result.extend(left_part[left_pos:])
     merge_result.extend(right_part[right_pos:])
 
