@@ -1,6 +1,3 @@
-import random
-
-
 def merge_sort(lst:[])->[]:
     if len(lst) <= 1:
         return lst
@@ -59,16 +56,3 @@ def merge_left_right(left_part:[],right_part:[])->[]:
     merge_result.extend(right_part[right_pos:])
 
     return merge_result
-
-#generate list filled with random ints
-list_items_count:int=20
-unsorted_list = [random.randint(0-(list_items_count*50),list_items_count*50) for x in range(list_items_count)]
-sorted_list = merge_sort(unsorted_list)
-print(sorted_list)
-#create list filled with strings
-unsorted_list = ["bee", "apples", "apple", "ape"]
-sorted_list = merge_sort(unsorted_list)
-print(sorted_list)
-unsorted_list = ["bee","apples","apple",1,"ape"]
-sorted_list = merge_sort(unsorted_list)
-print(sorted_list)

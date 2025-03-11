@@ -1,7 +1,6 @@
 from unittest import TestCase
 from mergesort import merge_sort
 
-
 class mergesort_Should(TestCase):
 
     def test_mergesort_sorts_correctly_when_array_has_elements(self):
