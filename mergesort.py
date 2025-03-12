@@ -23,64 +23,15 @@ def merge_left_right(left_part:[],right_part:[])->[]:
     merge_result = []
     left_pos = right_pos = 0
     while left_pos < len(left_part) and right_pos < len(right_part):
-        left_element = left_part[left_pos]
-        right_element = right_part[right_pos]
-        #Check if both elements are strings and if so start comparing them as strings
-        if isinstance(left_element,str) and isinstance(right_element,str):
-            #Find out which element has the shortest length to avoid IndexError
-            min_len = min(len(left_element),len(right_element))
-            #Set the current position to 0
-            cur_pos = 0
-            #Iterate through all positions unti min_length is reached
-            while cur_pos<min_len:
-                #Get the ascii value of both elements which we will compare
-                left_element_code = ord(left_element[cur_pos])
-                right_element_code = ord(right_element[cur_pos])
-                #Self-explanatory
-                if left_element_code < right_element_code:
-                    merge_result.append(left_element)
-                    left_pos +=1
-                    #If the ascii code value is less append and move to next element,
-                    #also exit the inner while loop
-                    break
-                #If the ascii code values are equal then move to the next letter of the word
-                elif left_element_code == right_element_code:
-                    #If the current position hasn't reacche the end of the word
-                    #Move to the next symbol
-                    if cur_pos<min_len-1:
-                        cur_pos +=1
-                    #If the end of the word has been reached
-                    else:
-                        #Check which element has been 'depleted' and then
-                        #consider it to be with 'less' value than the other
-                        #since whitespace characters ( empty ) are with smaller
-                        #value than alphabetical characters
-                        if min_len == len(left_element):
-                            merge_result.append(left_element)
-                            left_pos +=1
-                            break
-                        else:
-                            merge_result.append(right_element)
-                            right_pos +=1
-                            break
-                #Self-explanatory
-                else:
-                    merge_result.append(right_element)
-                    right_pos +=1
-                    break
-        #If the elements are ints or floats, compare them as numbers
-        elif isinstance(left_element,int|float) and isinstance(right_element,int|float):
-            #Self-explanatory
-            if left_part[left_pos] < right_part[right_pos]:
-                merge_result.append(left_part[left_pos])
-                left_pos += 1
-            else:
-            #Self-explanatory
-                merge_result.append(right_part[right_pos])
-                right_pos += 1
+        #If the left part element's value is smaller than the right part append the
+        #left part element to the list
+        if left_part[left_pos] < right_part[right_pos]:
+            merge_result.append(left_part[left_pos])
+            left_pos += 1
         else:
-            #If both elements cannot be compared raise TypeError
-            raise TypeError("Types of list elements do not support sorting in such a way!")
+        #If the right part element's value is greater it will be appended to the list
+            merge_result.append(right_part[right_pos])
+            right_pos += 1
     #If one of the parts ( left or right ) has been exhausted for example the left part
     #we must extend the list with the remaining elements of the right part.
     merge_result.extend(left_part[left_pos:])
