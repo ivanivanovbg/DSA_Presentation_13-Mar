@@ -2,6 +2,12 @@
 #1 Divide
 #2 Conquer
 #3 Merge
+def cmp_smaller(x,y)->bool:
+    return x<y
+
+def cmp_greater(x,y)->bool:
+    return x>y
+
 def merge_sort(lst:[],reverse=False,comparer=None)->[]:
     #check if length of list is one -> already sorted
     #also cover the edge case where there is an empty list
@@ -16,9 +22,9 @@ def merge_sort(lst:[],reverse=False,comparer=None)->[]:
         #or reversed sorting is requested
         if not comparer:
             if not reverse:
-                comparer = lambda x,y : x < y
+                comparer = cmp_smaller
             else:
-                comparer = lambda x,y : x > y
+                comparer = cmp_greater
         #If custom comparer has been set it will be passed to the merge_left_right function
         #Pass the left part and divide it into smaller parts recursively
         sorted_left_part = merge_sort(left_part,reverse,comparer)
