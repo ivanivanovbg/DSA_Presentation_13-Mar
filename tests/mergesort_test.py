@@ -1,5 +1,6 @@
 from unittest import TestCase
-from mergesort import merge_sort
+from mergesort_w_custom_comparer import merge_sort
+from custom_object import CustomObject
 
 class mergesort_Should(TestCase):
 
@@ -41,3 +42,15 @@ class mergesort_Should(TestCase):
         #Act and Assert
         with self.assertRaises(TypeError):
             merge_sort(unsorted_list)
+
+    def test_mergesort_works_with_custom_object(self):
+        #Arrange
+        unsorted_array_of_objects = [CustomObject(100, 50), CustomObject(10, 20), CustomObject(30, 40)]
+        custom_comparer = lambda x, y: x.height < y.height
+        expected_result = [CustomObject(10, 20),CustomObject(30, 40),CustomObject(100, 50)]
+
+        #Act
+        sorted_array_of_objects = merge_sort(unsorted_array_of_objects,True,custom_comparer)
+
+        #Assert
+        self.assertListEqual(sorted_array_of_objects,expected_result)
